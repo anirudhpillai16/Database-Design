@@ -1,0 +1,114 @@
+1. Creating the Database and Nations
+
+USE ASS5;
+CREATE TABLE Nations
+(
+Team VARCHAR(255),
+Rank INT,
+Matches INT,
+Points INT,
+Ratings INT);
+
+2. Inserting values into the Team Database
+
+INSERT INTO Nations(Team,Rank,Matches,Points,Ratings)
+VALUES 
+('Australia',1,43,4823,112),
+('India',2,32,3535,110),
+('South Africa',3,34,3703,109),
+('Pakistan',4,28,2977,106),
+('England',5,45,4610,102),
+('New Zealand',6,39,3755,96),
+('Srilanka',7,35,3123,89),
+('West Indies',8,33,2504,76),
+('Bangladesh',9,22,1026,47),
+('Zimbabwe',10,10,53,5);
+SELECT *FROM Nations;
+
+3. Creating the table Batsman
+
+CREATE TABLE Batsman
+(
+Name VARCHAR(255),
+Type VARCHAR(255),
+Ratings INT);
+
+4. Inserting values into Batsman
+
+INSERT INTO Batsman(Name,Type,Ratings)
+VALUES 
+('Steve Smith','Right Hand Batsman',112),
+('Joe Root','Right Hand Batsman',102),
+('Kane Williamson','Right Hand Batsman',96),
+('Hashim Amla','Right Hand Batsman',109),
+('Younus Khan','Right Hand Batsman',106),
+('AB de Villiers','Right Hand Batsman',109),
+('Adam Vogues','Right Hand Batsman',112),
+('Angelo Matthews','Right Hand Batsman',89),
+('David Warner','Left Hand Batsman',112),
+('Misbah ul Haq','Right Hand Batsman',106);
+SELECT *FROM Batsman;
+
+5. Creating Table Bowler
+
+CREATE TABLE Bowler
+(
+Name VARCHAR(255),
+Type VARCHAR(255),
+Ratings INT);
+
+6. Inserting values into Table
+
+INSERT INTO Bowler(Name,Type,Ratings)
+VALUES
+('Stuart Broad','Right Arm Fast',102),
+('R Ashwin','Right Arm Off Spin',110),
+('Yasir Shah','Right Arm Fast',106),
+('Dale Steyn','Right Arm Fast',109),
+('James Anderson','Right Arm Fast',102),
+('Ravindra Jadeja','Left Arm Off Spin',110),
+('Trent Boult','Left Arm Fast',96),
+('JR Hazelwood','Right Arm Fast',112),
+('Morne Morkel','Right Arm Fast',109),
+('Vernon Philander','Right Arm Fast',109);
+SELECT *FROM Bowler;
+
+7. Creating Table Continent
+
+CREATE TABLE Continent
+(
+Country VARCHAR(255),
+Capital VARCHAR(255),
+Continent VARCHAR(255)
+);
+
+8. Inserting values into Continent
+
+INSERT INTO Continent (Country, Capital, Continent)
+VALUES
+('Australia','Canberra','Australian Continent'),
+('Bangladesh','Dhaka','Asia'),
+('England','London','Europe'),
+('India','New Delhi','Asia'),
+('New Zealand','Wellington','Australian Continent'),
+('Pakistan','Islamabad','Asia'),
+('South Africa','Cape Town','Africa'),
+('Srilanka','Colombo','Asia'),
+('West Indies','Trinidad','North America'),
+('Zimbabwe','Harare','Africa');
+
+9. RIGHT OUTER JOIN OF Nations and Continent 
+
+SELECT *FROM Nations
+RIGHT OUTER JOIN Continent
+USING (Country);
+
+10. List All Players from South Africa who are Batsman and Bowler
+
+SELECT Name,Type FROM Batsman
+WHERE Ratings=109
+UNION
+SELECT Name, Type FROM Bowler
+WHERE Ratings=109
+ORDER BY Name;
+
